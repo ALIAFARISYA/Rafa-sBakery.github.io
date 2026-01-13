@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Velvet Cake - Rafa's Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="Menu.html" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+        
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="breadcrumb">
+    <i class="fa fa-house"></i> 
+    <a href="Homepage.html" class="breadcrumb-link">Home</a>
+    &gt; Cart
+</div>
+
+    <!-- Product Detail Section -->
+<div class="product-detail-container">
+    <a href="Menu.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Menu
+    </a>
+    
+    <!-- Gambar Full Width (Atas Sekali) -->
+    <div class="product-image-full">
+        <img src="rvc.png" alt="Red Velvet Cake" id="productImage">
+    </div>
+    
+    <!-- Product Info (Bawah Gambar) -->
+    <div class="product-info-full">
+        <h1 class="product-title-detail" id="productTitle">Red Velvet Cake</h1>
+        
+        <!-- Price Display -->
+        <div class="product-price-detail" id="productPriceDisplay">RM 107.00</div>
+        
+        <!-- Description & Nutrition dalam 2 columns -->
+        <div class="info-grid">
+            <div class="calories-info">
+                <h4>Description</h4>
+                <p>A classic red velvet cake with rich cream cheese frosting. Perfect for birthdays, anniversaries, or any special celebration. Made with premium cocoa and natural food coloring for that signature red color.</p>
+            </div>
+            
+            <div class="calories-info">
+                <h4>Nutrition Information (per 100g serving)</h4>
+                <p id="caloriesInfo">
+                    • Calories: 350 kcal<br>
+                    • Total Fat: 18g<br>
+                    • Saturated Fat: 10g<br>
+                    • Cholesterol: 85mg<br>
+                    • Sodium: 280mg<br>
+                    • Total Carbohydrates: 42g<br>
+                    • Dietary Fiber: 1g<br>
+                    • Sugars: 30g<br>
+                    • Protein: 5g
+                </p>
+            </div>
+        </div>
+        
+        <!-- Size Selection -->
+        <div class="option-section">
+            <h3 class="option-title">Choose Size</h3>
+            <div class="size-options" id="sizeOptions">
+                <!-- Size options will be populated by JavaScript -->
+            </div>
+            <p class="greeting-card-note"><i class="fas fa-info-circle"></i> <strong>Not for writing on the item</strong></p>
+        </div>
+        
+        <!-- Greeting Card Option -->
+        <div class="option-section">
+            <h3 class="option-title">Greeting Card (Optional)</h3>
+            <div class="greeting-card-option" id="greetingCardOption">
+                <input type="checkbox" id="greetingCardCheckbox">
+                <label for="greetingCardCheckbox">Add personalized greeting card (+RM 5.00)</label>
+                <div class="greeting-card-price" id="greetingCardPrice">RM 5.00</div>
+            </div>
+            <p class="greeting-card-note">Freehold back available</p>
+        </div>
+        
+        <!-- Personal Message -->
+        <div class="option-section message-section">
+            <h3 class="option-title">Personal Message (Optional)</h3>
+            <textarea class="message-input" id="personalMessage" 
+                      placeholder="Write your personalized message here... (Max 250 characters)"></textarea>
+            <div class="char-count" id="charCount">
+                <span id="remainingChars">250</span> characters remaining
+            </div>
+        </div>
+        
+        <!-- Price Breakdown -->
+        <div class="price-breakdown" id="priceBreakdown">
+            <div class="price-item">
+                <span>Cake Price:</span>
+                <span id="cakePrice">RM 107.00</span>
+            </div>
+            <div class="price-item">
+                <span>Greeting Card:</span>
+                <span id="greetingCardCost">RM 0.00</span>
+            </div>
+            <div class="price-item total">
+                <span>Total:</span>
+                <span id="totalPrice">RM 107.00</span>
+            </div>
+        </div>
+        
+        <!-- Add to Cart Button -->
+        <button id="addToCartBtn" class="add-to-cart-btn">
+            <span>Add To Cart</span>
+            <span id="finalPrice">RM 107.00</span>
+        </button>
+    </div>
+</div>
+        
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="Menu.html">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function checkLoginAndAdd() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (!isLoggedIn) {
+        alert("Please login first to add items to cart.");
+        window.location.href = "Account.html";
+        return;
+    }
+
+    addToCart(); // function sedia ada awak
+}
+
+        // Product data for Red Velvet Cake
+        const productData = {
+            id: 2,
+            name: "Red Velvet Cake",
+            description: "A classic red velvet cake with cream cheese frosting, perfect for any celebration.",
+            image: "rvc.png",
+            
+            // Size options with different prices
+            sizes: [
+                { 
+                    id: "small", 
+                    name: "Small", 
+                    price: 87.00,
+                    calories: "• Calories: 350 kcal per 100g<br>• Serving Size: 6-8 slices<br>• Total Cake: ~1.8kg",
+                    servings: "6-8 Servings",
+                    dimensions: "6 inch",
+                    default: false
+                },
+                { 
+                    id: "medium", 
+                    name: "Medium", 
+                    price: 107.00,
+                    calories: "• Calories: 350 kcal per 100g<br>• Serving Size: 8-12 slices<br>• Total Cake: ~2.4kg",
+                    servings: "8-12 Servings",
+                    dimensions: "8 inch",
+                    default: true
+                },
+                { 
+                    id: "large", 
+                    name: "Large", 
+                    price: 135.00,
+                    calories: "• Calories: 350 kcal per 100g<br>• Serving Size: 12-16 slices<br>• Total Cake: ~3.2kg",
+                    servings: "12-16 Servings",
+                    dimensions: "10 inch",
+                    default: false
+                }
+            ],
+            
+            // Greeting card price
+            greetingCardPrice: 5.00
+        };
+        
+        // Global variables
+        let selectedSize = null;
+        let totalPrice = 0;
+        let basePrice = 0;
+        
+        // DOM Elements
+        const sizeOptionsContainer = document.getElementById('sizeOptions');
+        const greetingCardOption = document.getElementById('greetingCardOption');
+        const greetingCardCheckbox = document.getElementById('greetingCardCheckbox');
+        const greetingCardPriceElement = document.getElementById('greetingCardPrice');
+        const personalMessage = document.getElementById('personalMessage');
+        const charCountElement = document.getElementById('charCount');
+        const remainingCharsElement = document.getElementById('remainingChars');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const finalPriceElement = document.getElementById('finalPrice');
+        const productTitleElement = document.getElementById('productTitle');
+        const productPriceDisplay = document.getElementById('productPriceDisplay');
+        const caloriesInfoElement = document.getElementById('caloriesInfo');
+        const productImageElement = document.getElementById('productImage');
+        
+        // Price breakdown elements
+        const cakePriceElement = document.getElementById('cakePrice');
+        const greetingCardCostElement = document.getElementById('greetingCardCost');
+        const totalPriceElement = document.getElementById('totalPrice');
+        
+        // Initialize function
+        function initializeProductPage() {
+            // Set product info
+            productTitleElement.textContent = productData.name;
+            productImageElement.src = productData.image;
+            productImageElement.alt = productData.name;
+            
+            // Create size options
+            createSizeOptions();
+            
+            // Set default size
+            const defaultSize = productData.sizes.find(size => size.default) || productData.sizes[1];
+            selectSize(defaultSize);
+            
+            // Initialize greeting card
+            greetingCardPriceElement.textContent = `RM ${productData.greetingCardPrice.toFixed(2)}`;
+            
+            // Add event listeners
+            setupEventListeners();
+            
+            // Initialize cart
+            updateCartCount();
+        }
+        
+        // Create size options dynamically
+        function createSizeOptions() {
+            sizeOptionsContainer.innerHTML = '';
+            
+            productData.sizes.forEach(size => {
+                const sizeOption = document.createElement('div');
+                sizeOption.className = 'size-option';
+                sizeOption.dataset.sizeId = size.id;
+                sizeOption.dataset.price = size.price;
+                
+                sizeOption.innerHTML = `
+                    <div class="size-label">${size.name}</div>
+                    <div class="size-price">RM ${size.price.toFixed(2)}</div>
+                    <div class="size-details">${size.servings}<br>${size.dimensions}</div>
+                `;
+                
+                sizeOption.addEventListener('click', () => selectSize(size));
+                sizeOptionsContainer.appendChild(sizeOption);
+            });
+        }
+        
+        // Select a size
+        function selectSize(size) {
+            // Remove selected class from all options
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            const selectedOption = document.querySelector(`[data-size-id="${size.id}"]`);
+            selectedOption.classList.add('selected');
+            
+            // Update selected size
+            selectedSize = size;
+            basePrice = size.price;
+            
+            // Update calories info
+            caloriesInfoElement.innerHTML = size.calories;
+            
+            // Update price display
+            updatePriceDisplay();
+        }
+        
+        // Update price display
+        function updatePriceDisplay() {
+            if (!selectedSize) return;
+            
+            // Calculate greeting card cost
+            const greetingCardCost = greetingCardCheckbox.checked ? productData.greetingCardPrice : 0;
+            
+            // Calculate total
+            totalPrice = basePrice + greetingCardCost;
+            
+            // Update price display elements
+            productPriceDisplay.textContent = `RM ${selectedSize.price.toFixed(2)}`;
+            cakePriceElement.textContent = `RM ${selectedSize.price.toFixed(2)}`;
+            greetingCardCostElement.textContent = `RM ${greetingCardCost.toFixed(2)}`;
+            totalPriceElement.textContent = `RM ${totalPrice.toFixed(2)}`;
+            finalPriceElement.textContent = `RM ${totalPrice.toFixed(2)}`;
+            
+            // Update greeting card option style
+            if (greetingCardCheckbox.checked) {
+                greetingCardOption.classList.add('selected');
+            } else {
+                greetingCardOption.classList.remove('selected');
+            }
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Greeting card checkbox
+            greetingCardCheckbox.addEventListener('change', updatePriceDisplay);
+            
+            // Greeting card option click (whole div is clickable)
+            greetingCardOption.addEventListener('click', (e) => {
+                if (e.target !== greetingCardCheckbox) {
+                    greetingCardCheckbox.checked = !greetingCardCheckbox.checked;
+                    updatePriceDisplay();
+                }
+            });
+            
+            // Message character counter
+            personalMessage.addEventListener('input', updateCharacterCount);
+
+            
+
+            
+            // Add to cart button
+            addToCartBtn.addEventListener('click', checkLoginAndAdd);
+
+        }
+        
+        // Update character count for message
+        function updateCharacterCount() {
+            const maxChars = 250;
+            const currentChars = personalMessage.value.length;
+            const remaining = maxChars - currentChars;
+            
+            remainingCharsElement.textContent = remaining;
+            
+            // Update styling based on remaining characters
+            charCountElement.className = 'char-count';
+            if (remaining < 0) {
+                charCountElement.classList.add('error');
+                // Truncate the text
+                personalMessage.value = personalMessage.value.substring(0, maxChars);
+                remainingCharsElement.textContent = 0;
+            } else if (remaining < 50) {
+                charCountElement.classList.add('warning');
+            }
+        }
+        
+        // Add to cart function
+        function addToCart() {
+            if (!selectedSize) {
+                alert('Please select a size first!');
+                return;
+            }
+            
+            // Create cart item
+            const cartItem = {
+                productId: productData.id,
+                name: productData.name,
+                size: selectedSize.name,
+                sizeId: selectedSize.id,
+                price: totalPrice,
+                basePrice: basePrice,
+                greetingCard: greetingCardCheckbox.checked,
+                greetingCardPrice: greetingCardCheckbox.checked ? productData.greetingCardPrice : 0,
+                message: personalMessage.value,
+                image: productData.image,
+                calories: selectedSize.calories,
+                cartId: Date.now() + Math.random().toString(36).substr(2, 9),
+                addedAt: new Date().toISOString()
+            };
+            
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('rafasBakeryCart')) || [];
+            
+            // Add new item to cart
+            cart.push(cartItem);
+            
+            // Save to localStorage
+            localStorage.setItem('rafasBakeryCart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show notification
+            showCartNotification(cartItem.name, selectedSize.name);
+        }
+        
+        // Update cart count in navigation
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('rafasBakeryCart')) || [];
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            cartCountElements.forEach(element => {
+                element.textContent = cart.length;
+            });
+        }
+        
+        // Show cart notification
+        function showCartNotification(productName, sizeName) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.cart-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Added <strong>${productName} (${sizeName})</strong> to cart!</span>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            function addItem(name, price) {
+                cart.push({ name, price });
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+               alert(name + " added to cart!");
+            }
+        }
+        
+        // Initialize the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeProductPage);
+
+
+        const accountLink = document.getElementById("accountLink");
+
+        if (localStorage.getItem("isLoggedIn")) {
+            accountLink.href = "MyAccount.html";
+        }
+
+        
+    </script>
+</body>
+</html>

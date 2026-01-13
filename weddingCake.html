@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Wedding Cake - Rafa's Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="Menu.html" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="Cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="breadcrumb">
+        <i class="fa fa-house"></i> 
+        <a href="Homepage.html" class="breadcrumb-link">Home</a>
+        &gt; Custom Wedding Cake
+    </div>
+
+    <!-- Custom Cake Section -->
+    <div class="custom-cake-container">
+        <a href="Menu.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Menu
+        </a>
+        
+        <div class="custom-cake-large">
+            <!-- Cake Preview -->
+            <div class="cake-preview-large">
+                <div class="preview-image-large">
+                    <img src="wedc.png" alt="Wedding Cake" id="cakePreviewImage">
+                </div>
+                <div class="preview-details-large">
+                    <h3>Your Custom Wedding Cake</h3>
+                    <ul id="cakeSpecifications">
+                        <li><i class="fas fa-check-circle"></i> <strong>Flavor:</strong> <span id="previewFlavor">Vanilla & Red Velvet</span></li>
+                        <li><i class="fas fa-layer-group"></i> <strong>Tiers:</strong> <span id="previewTiers">3 Tiers</span></li>
+                        <li><i class="fas fa-palette"></i> <strong>Color:</strong> <span id="previewColor">White & Gold</span></li>
+                        <li><i class="fas fa-star"></i> <strong>Decoration:</strong> <span id="previewDecoration">Fresh Flowers</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Customization Form -->
+            <div class="customization-form">
+                <h1 class="form-title">Custom Wedding Cake</h1>
+                <p class="form-subtitle">Design your dream wedding cake with our customization options</p>
+                
+                <!-- Flavor Selection -->
+                <div class="form-section">
+                    <h3 class="section-title">Choose Cake Flavor</h3>
+                    <div class="flavor-options" id="flavorOptions">
+                        <div class="flavor-option" data-flavor="vanilla" data-price="0">
+                            <div class="flavor-icon"><i class="fas fa-cookie-bite"></i></div>
+                            <div class="flavor-name">Vanilla</div>
+                            <div class="flavor-price">+RM 0.00</div>
+                        </div>
+                        <div class="flavor-option" data-flavor="chocolate" data-price="50">
+                            <div class="flavor-icon"><i class="fas fa-candy-cane"></i></div>
+                            <div class="flavor-name">Chocolate</div>
+                            <div class="flavor-price">+RM 50.00</div>
+                        </div>
+                        <div class="flavor-option" data-flavor="red-velvet" data-price="80">
+                            <div class="flavor-icon"><i class="fas fa-heart"></i></div>
+                            <div class="flavor-name">Red Velvet</div>
+                            <div class="flavor-price">+RM 80.00</div>
+                        </div>
+                        <div class="flavor-option" data-flavor="carrot" data-price="60">
+                            <div class="flavor-icon"><i class="fas fa-carrot"></i></div>
+                            <div class="flavor-name">Carrot Cake</div>
+                            <div class="flavor-price">+RM 60.00</div>
+                        </div>
+                        <div class="flavor-option" data-flavor="lemon" data-price="40">
+                            <div class="flavor-icon"><i class="fas fa-lemon"></i></div>
+                            <div class="flavor-name">Lemon</div>
+                            <div class="flavor-price">+RM 40.00</div>
+                        </div>
+                        <div class="flavor-option" data-flavor="mixed" data-price="100">
+                            <div class="flavor-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="flavor-name">Mixed Flavors</div>
+                            <div class="flavor-price">+RM 100.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tier Selection -->
+                <div class="form-section">
+                    <h3 class="section-title">Number of Tiers</h3>
+                    <div class="tier-options" id="tierOptions">
+                        <div class="tier-option" data-tiers="2" data-price="300">
+                            <div class="tier-number">2</div>
+                            <div class="tier-label">Two Tier</div>
+                            <div class="tier-price">RM 300.00</div>
+                            <div class="tier-details">Serves 40-60 guests</div>
+                        </div>
+                        <div class="tier-option selected" data-tiers="3" data-price="500">
+                            <div class="tier-number">3</div>
+                            <div class="tier-label">Three Tier</div>
+                            <div class="tier-price">RM 500.00</div>
+                            <div class="tier-details">Serves 80-120 guests</div>
+                        </div>
+                        <div class="tier-option" data-tiers="4" data-price="750">
+                            <div class="tier-number">4</div>
+                            <div class="tier-label">Four Tier</div>
+                            <div class="tier-price">RM 750.00</div>
+                            <div class="tier-details">Serves 150-200 guests</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Color Theme -->
+                <div class="form-section">
+                    <h3 class="section-title">Color Theme</h3>
+                    <div class="color-theme-options" id="colorOptions">
+                        <div class="color-option selected" data-color="white-gold" style="background: linear-gradient(45deg, #fff 50%, #ffd700 50%);">
+                            <span class="color-name">White & Gold</span>
+                        </div>
+                        <div class="color-option" data-color="blush-pink" style="background: linear-gradient(45deg, #ffe6e6 50%, #ffb6c1 50%);">
+                            <span class="color-name">Blush Pink</span>
+                        </div>
+                        <div class="color-option" data-color="navy-gold" style="background: linear-gradient(45deg, #000080 50%, #ffd700 50%);">
+                            <span class="color-name">Navy & Gold</span>
+                        </div>
+                        <div class="color-option" data-color="pastel" style="background: linear-gradient(45deg, #e6f7ff 50%, #e6ffe6 50%);">
+                            <span class="color-name">Pastel</span>
+                        </div>
+                        <div class="color-option" data-color="burgundy" style="background: linear-gradient(45deg, #800000 50%, #f5f5dc 50%);">
+                            <span class="color-name">Burgundy</span>
+                        </div>
+                        <div class="color-option" data-color="sage-green" style="background: linear-gradient(45deg, #9dc183 50%, #f5f5dc 50%);">
+                            <span class="color-name">Sage Green</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Decorations -->
+                <div class="form-section">
+                    <h3 class="section-title">Additional Decorations</h3>
+                    <div class="decoration-options" id="decorationOptions">
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="freshFlowers" data-price="150">
+                                <label for="freshFlowers">Fresh Flowers</label>
+                            </div>
+                            <div class="decoration-price">+RM 150.00</div>
+                        </div>
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="sugarFlowers" data-price="200">
+                                <label for="sugarFlowers">Sugar Flowers</label>
+                            </div>
+                            <div class="decoration-price">+RM 200.00</div>
+                        </div>
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="goldLeaf" data-price="100">
+                                <label for="goldLeaf">Gold Leaf Accents</label>
+                            </div>
+                            <div class="decoration-price">+RM 100.00</div>
+                        </div>
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="cakeTopper" data-price="80">
+                                <label for="cakeTopper">Custom Cake Topper</label>
+                            </div>
+                            <div class="decoration-price">+RM 80.00</div>
+                        </div>
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="ribbon" data-price="50">
+                                <label for="ribbon">Satin Ribbon</label>
+                            </div>
+                            <div class="decoration-price">+RM 50.00</div>
+                        </div>
+                        <div class="decoration-option">
+                            <div class="decoration-checkbox">
+                                <input type="checkbox" id="pearls" data-price="120">
+                                <label for="pearls">Pearl Beading</label>
+                            </div>
+                            <div class="decoration-price">+RM 120.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personalization -->
+                <div class="form-section personalization-section">
+                    <h3 class="section-title">Personal Details</h3>
+                    <div class="input-group">
+                        <label for="brideGroomNames">Bride & Groom Names</label>
+                        <input type="text" id="brideGroomNames" placeholder="e.g., Sarah & John">
+                    </div>
+                    <div class="input-group">
+                        <label for="weddingDate">Wedding Date</label>
+                        <input type="date" id="weddingDate">
+                    </div>
+                    <div class="input-group">
+                        <label for="specialInstructions">Special Instructions</label>
+                        <textarea id="specialInstructions" rows="4" placeholder="Any additional requests or special instructions for your wedding cake..."></textarea>
+                        <div class="char-count">
+                            <span id="remainingChars">500</span> characters remaining
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Price Breakdown -->
+                <div class="price-breakdown" id="priceBreakdown">
+                    <div class="price-item">
+                        <span>Base Cake:</span>
+                        <span id="baseCakePrice">RM 500.00</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Flavor (Mixed):</span>
+                        <span id="flavorPrice">RM 100.00</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Decorations:</span>
+                        <span id="decorationPrice">RM 0.00</span>
+                    </div>
+                    <div class="price-item total">
+                        <span>Total:</span>
+                        <span id="totalPrice">RM 600.00</span>
+                    </div>
+                </div>
+                
+                <!-- Add to Cart Button -->
+                <button class="add-to-cart-btn" id="addToCartBtn">
+                    <span>Add to Cart</span>
+                    <span id="finalPrice">RM 600.00</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="Menu.html">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Wedding Cake Customization Data
+        const weddingCakeData = {
+            basePrice: 500.00, // Default 3-tier price
+            flavors: {
+                'vanilla': { name: 'Vanilla', price: 0 },
+                'chocolate': { name: 'Chocolate', price: 50 },
+                'red-velvet': { name: 'Red Velvet', price: 80 },
+                'carrot': { name: 'Carrot Cake', price: 60 },
+                'lemon': { name: 'Lemon', price: 40 },
+                'mixed': { name: 'Mixed Flavors', price: 100 }
+            },
+            tiers: {
+                '2': { price: 300, serves: '40-60 guests', label: 'Two Tier' },
+                '3': { price: 500, serves: '80-120 guests', label: 'Three Tier' },
+                '4': { price: 750, serves: '150-200 guests', label: 'Four Tier' }
+            },
+            colors: {
+                'white-gold': { name: 'White & Gold', class: 'white-gold' },
+                'blush-pink': { name: 'Blush Pink', class: 'blush-pink' },
+                'navy-gold': { name: 'Navy & Gold', class: 'navy-gold' },
+                'pastel': { name: 'Pastel', class: 'pastel' },
+                'burgundy': { name: 'Burgundy', class: 'burgundy' },
+                'sage-green': { name: 'Sage Green', class: 'sage-green' }
+            },
+            decorations: {
+                'freshFlowers': { name: 'Fresh Flowers', price: 150 },
+                'sugarFlowers': { name: 'Sugar Flowers', price: 200 },
+                'goldLeaf': { name: 'Gold Leaf Accents', price: 100 },
+                'cakeTopper': { name: 'Custom Cake Topper', price: 80 },
+                'ribbon': { name: 'Satin Ribbon', price: 50 },
+                'pearls': { name: 'Pearl Beading', price: 120 }
+            }
+        };
+        
+        // Global variables
+        let selectedFlavor = 'mixed';
+        let selectedTiers = '3';
+        let selectedColor = 'white-gold';
+        let selectedDecorations = [];
+        let totalPrice = 600.00; // Initial total
+        
+        // DOM Elements
+        const flavorOptions = document.getElementById('flavorOptions');
+        const tierOptions = document.getElementById('tierOptions');
+        const colorOptions = document.getElementById('colorOptions');
+        const decorationOptions = document.getElementById('decorationOptions');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const finalPriceElement = document.getElementById('finalPrice');
+        
+        // Price breakdown elements
+        const baseCakePriceElement = document.getElementById('baseCakePrice');
+        const flavorPriceElement = document.getElementById('flavorPrice');
+        const decorationPriceElement = document.getElementById('decorationPrice');
+        const totalPriceElement = document.getElementById('totalPrice');
+        
+        // Preview elements
+        const previewFlavorElement = document.getElementById('previewFlavor');
+        const previewTiersElement = document.getElementById('previewTiers');
+        const previewColorElement = document.getElementById('previewColor');
+        const previewDecorationElement = document.getElementById('previewDecoration');
+        
+        // Initialize function
+        function initializeCustomCakePage() {
+            // Set up event listeners for all options
+            setupFlavorOptions();
+            setupTierOptions();
+            setupColorOptions();
+            setupDecorationOptions();
+            setupSpecialInstructions();
+            
+            // Initialize cart
+            updateCartCount();
+            
+            // Update price display
+            updatePriceDisplay();
+        }
+        
+        // Setup flavor options
+        function setupFlavorOptions() {
+            flavorOptions.querySelectorAll('.flavor-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    flavorOptions.querySelectorAll('.flavor-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Update selected flavor
+                    selectedFlavor = option.dataset.flavor;
+                    
+                    // Update preview
+                    previewFlavorElement.textContent = weddingCakeData.flavors[selectedFlavor].name;
+                    
+                    // Update price
+                    updatePriceDisplay();
+                });
+            });
+        }
+        
+        // Setup tier options
+        function setupTierOptions() {
+            tierOptions.querySelectorAll('.tier-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    tierOptions.querySelectorAll('.tier-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Update selected tiers
+                    selectedTiers = option.dataset.tiers;
+                    
+                    // Update preview
+                    previewTiersElement.textContent = `${selectedTiers} Tiers`;
+                    
+                    // Update price
+                    updatePriceDisplay();
+                });
+            });
+        }
+        
+        // Setup color options
+        function setupColorOptions() {
+            colorOptions.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    colorOptions.querySelectorAll('.color-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Update selected color
+                    selectedColor = option.dataset.color;
+                    
+                    // Update preview
+                    previewColorElement.textContent = weddingCakeData.colors[selectedColor].name;
+                });
+            });
+        }
+        
+        // Setup decoration options
+        function setupDecorationOptions() {
+            decorationOptions.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const decorationId = checkbox.id;
+                    
+                    if (checkbox.checked) {
+                        // Add to selected decorations
+                        if (!selectedDecorations.includes(decorationId)) {
+                            selectedDecorations.push(decorationId);
+                        }
+                    } else {
+                        // Remove from selected decorations
+                        selectedDecorations = selectedDecorations.filter(id => id !== decorationId);
+                    }
+                    
+                    // Update decoration parent style
+                    const parentOption = checkbox.closest('.decoration-option');
+                    if (checkbox.checked) {
+                        parentOption.classList.add('selected');
+                    } else {
+                        parentOption.classList.remove('selected');
+                    }
+                    
+                    // Update preview
+                    updateDecorationPreview();
+                    
+                    // Update price
+                    updatePriceDisplay();
+                });
+            });
+        }
+        
+        // Setup special instructions character counter
+        function setupSpecialInstructions() {
+            const specialInstructions = document.getElementById('specialInstructions');
+            const remainingCharsElement = document.getElementById('remainingChars');
+            
+            specialInstructions.addEventListener('input', () => {
+                const maxChars = 500;
+                const currentChars = specialInstructions.value.length;
+                const remaining = maxChars - currentChars;
+                
+                remainingCharsElement.textContent = remaining;
+                
+                // Update styling
+                if (remaining < 0) {
+                    remainingCharsElement.parentElement.classList.add('error');
+                    specialInstructions.value = specialInstructions.value.substring(0, maxChars);
+                } else {
+                    remainingCharsElement.parentElement.classList.remove('error');
+                }
+            });
+        }
+        
+        // Update decoration preview
+        function updateDecorationPreview() {
+            if (selectedDecorations.length === 0) {
+                previewDecorationElement.textContent = 'Basic';
+            } else {
+                const decorationNames = selectedDecorations.map(id => 
+                    weddingCakeData.decorations[id]?.name || id
+                );
+                previewDecorationElement.textContent = decorationNames.join(', ');
+            }
+        }
+        
+        // Update price display
+        function updatePriceDisplay() {
+            // Calculate base price from tiers
+            const basePrice = weddingCakeData.tiers[selectedTiers].price;
+            
+            // Calculate flavor price
+            const flavorPrice = weddingCakeData.flavors[selectedFlavor].price;
+            
+            // Calculate decoration price
+            let decorationTotal = 0;
+            selectedDecorations.forEach(decorationId => {
+                if (weddingCakeData.decorations[decorationId]) {
+                    decorationTotal += weddingCakeData.decorations[decorationId].price;
+                }
+            });
+            
+            // Calculate total
+            totalPrice = basePrice + flavorPrice + decorationTotal;
+            
+            // Update price breakdown
+            baseCakePriceElement.textContent = `RM ${basePrice.toFixed(2)}`;
+            flavorPriceElement.textContent = `RM ${flavorPrice.toFixed(2)}`;
+            decorationPriceElement.textContent = `RM ${decorationTotal.toFixed(2)}`;
+            totalPriceElement.textContent = `RM ${totalPrice.toFixed(2)}`;
+            finalPriceElement.textContent = `RM ${totalPrice.toFixed(2)}`;
+        }
+        
+        // Add to cart function
+        function addToCart() {
+            // Get personalization details
+            const brideGroomNames = document.getElementById('brideGroomNames').value;
+            const weddingDate = document.getElementById('weddingDate').value;
+            const specialInstructions = document.getElementById('specialInstructions').value;
+            
+            // Validate required fields
+            if (!brideGroomNames.trim()) {
+                alert('Please enter the bride and groom names.');
+                document.getElementById('brideGroomNames').focus();
+                return;
+            }
+            
+            if (!weddingDate) {
+                alert('Please select your wedding date.');
+                document.getElementById('weddingDate').focus();
+                return;
+            }
+            
+            // Create custom cake item
+            const cakeItem = {
+                productId: 'custom-wedding-cake',
+                name: 'Custom Wedding Cake',
+                type: 'custom-wedding-cake',
+                basePrice: weddingCakeData.tiers[selectedTiers].price,
+                flavor: {
+                    id: selectedFlavor,
+                    name: weddingCakeData.flavors[selectedFlavor].name,
+                    price: weddingCakeData.flavors[selectedFlavor].price
+                },
+                tiers: {
+                    number: selectedTiers,
+                    label: weddingCakeData.tiers[selectedTiers].label,
+                    serves: weddingCakeData.tiers[selectedTiers].serves
+                },
+                color: {
+                    id: selectedColor,
+                    name: weddingCakeData.colors[selectedColor].name
+                },
+                decorations: selectedDecorations.map(id => ({
+                    id: id,
+                    name: weddingCakeData.decorations[id].name,
+                    price: weddingCakeData.decorations[id].price
+                })),
+                personalization: {
+                    brideGroomNames: brideGroomNames,
+                    weddingDate: weddingDate,
+                    specialInstructions: specialInstructions
+                },
+                price: totalPrice,
+                image: 'wedc.png',
+                cartId: Date.now() + Math.random().toString(36).substr(2, 9),
+                addedAt: new Date().toISOString()
+            };
+            
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('rafasBakeryCart')) || [];
+            
+            // Add custom cake to cart
+            cart.push(cakeItem);
+            
+            // Save to localStorage
+            localStorage.setItem('rafasBakeryCart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show notification
+            showCartNotification();
+            
+            // Reset form (optional)
+            setTimeout(() => {
+                document.getElementById('brideGroomNames').value = '';
+                document.getElementById('weddingDate').value = '';
+                document.getElementById('specialInstructions').value = '';
+            }, 1000);
+        }
+        
+        // Update cart count in navigation
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('rafasBakeryCart')) || [];
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            cartCountElements.forEach(element => {
+                element.textContent = cart.length;
+            });
+        }
+        
+        // Show cart notification
+        function showCartNotification() {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.cart-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Your <strong>Custom Wedding Cake</strong> has been added to cart!</span>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+        
+        // Add event listener to Add to Cart button
+        addToCartBtn.addEventListener('click', addToCart);
+        
+        // Initialize the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeCustomCakePage);
+
+        const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+    </script>
+</body>
+</html>

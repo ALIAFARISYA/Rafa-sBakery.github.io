@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Rafa's Bakery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <!-- ===== NAVBAR ===== -->
+<!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="#" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right side icons -->
+            <div class="header-icons">
+                <a href="cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="search-container">
+                    <a href="#" class="icon-link search-icon">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search for bread, pastries, cakes...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <a href="Account.html" class="icon-link profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="profile-dropdown">
+                        <a href="#"><i class="fas fa-user-circle"></i> My Account</a>
+                        <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                        <a href="#"><i class="fas fa-history"></i> Order History</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+    <i class="fa fa-house"></i> 
+    <a href="Homepage.html" class="breadcrumb-link">Home</a>
+    &gt; Cart
+</div>
+
+<!-- TITLE -->
+<section class="title">
+    <h2>Your Cart</h2>
+    <p>Freshly baked with love, using the finest ingredients.</p>
+</section>
+
+<hr>
+
+<!-- CART TABLE HEADER -->
+<div class="cart-header">
+    <span class="left-link">← Continue browsing</span>
+    <span>Price</span>
+    <span>Quantity</span>
+    <span>Total</span>
+</div>
+
+<!-- CART ITEMS -->
+<div id="cartItems"></div>
+
+
+
+    <!-- TOTAL & CHECKOUT (ONLY ONE) -->
+    <div class="order-summary">
+        <p>Total Price</p>
+        <h3>RM <span id="subtotal">0.00</span></h3>
+
+        <button class="checkout-btn" onclick="checkout()">Check Out</button>
+    </div>
+
+</div>
+
+
+   <!-- Cart Functionality Script -->
+
+<script>
+
+
+if (!localStorage.getItem("isLoggedIn")) {
+    alert("Please login first to view cart.");
+    window.location.href = "Account.html";
+}
+
+
+let cart = JSON.parse(localStorage.getItem("rafasBakeryCart")) || [];
+
+function loadCart() {
+    const cartItemsDiv = document.getElementById("cartItems");
+    const subtotalEl = document.getElementById("subtotal");
+    const cartCount = document.querySelector(".cart-count");
+
+    cartItemsDiv.innerHTML = "";
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        if (!item.quantity || item.quantity < 1) item.quantity = 1;
+    });
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        cartItemsDiv.innerHTML += `
+        <div class="cart-item">
+            <div class="item-info">
+                <img src="${item.image}">
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>Size: ${item.size}</p>
+                    <button class="remove" onclick="removeItem(${index})">Remove</button>
+                </div>
+            </div>
+
+            <div class="price">RM ${item.price.toFixed(2)}</div>
+
+            <div class="quantity">
+                <button onclick="changeQty(${index}, -1)">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+
+            <div class="total">RM ${itemTotal.toFixed(2)}</div>
+        </div>`;
+    });
+
+    subtotalEl.textContent = subtotal.toFixed(2);
+    cartCount.textContent = cart.length;
+
+    localStorage.setItem("rafasBakeryCart", JSON.stringify(cart));
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    loadCart();
+}
+
+function changeQty(index, change) {
+    cart[index].quantity += change;
+    if (cart[index].quantity < 1) cart[index].quantity = 1;
+    loadCart();
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const orderData = {
+        items: cart,
+        total: document.getElementById("subtotal").innerText
+    };
+
+    localStorage.setItem("rafasBakeryOrder", JSON.stringify(orderData));
+    window.location.href = "PlaceOrder.html";
+}
+
+window.onload = loadCart;
+
+
+
+const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+</script>
+
+
+
+<!-- Footer Section -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

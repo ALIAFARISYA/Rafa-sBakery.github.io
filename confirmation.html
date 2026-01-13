@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Rafa's Bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    </style>
+</head>
+<bodys>
+    <div class="confirmation-container">
+        <!-- Decorative corners -->
+        <div class="corner-decoration"></div>
+        <div class="corner-decoration-2"></div>
+        
+        <!-- Success Header -->
+        <div class="success-header">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="success-title">Payment Successful!</h1>
+            <p class="success-subtitle">Thank you for your order from Rafa's Bakery</p>
+            <p>Your order has been confirmed and is being prepared</p>
+        </div>
+        
+        <!-- Order Number -->
+        <div class="order-number">
+            <div class="order-label">Your Order Number</div>
+            <div class="order-id" id="orderId">DF-M834862</div>
+            <div style="font-size: 0.9rem; color: #a67c52; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i>
+                Please keep this number for reference
+            </div>
+        </div>
+        
+        <!-- Confirmation Card -->
+        <div class="confirmation-card">
+            <!-- Order Summary -->
+            <div class="card-section">
+                <h3 class="section-title"><i class="fas fa-receipt"></i> Order Summary</h3>
+                
+                <div class="details-grid">
+                    <div class="details-item">
+                        <div class="details-label">Order Date</div>
+                        <div class="details-value" id="orderDate">15 December 2023</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Order Time</div>
+                        <div class="details-value" id="orderTime">14:30 PM</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Customer Name</div>
+                        <div class="details-value" id="customerName">Loading...</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Email Address</div>
+                        <div class="details-value" id="customerEmail">Loading...</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Contact Number</div>
+                        <div class="details-value" id="customerPhone">Loading...</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Payment Method</div>
+                        <div class="details-value" id="paymentMethod">Loading...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delivery Details -->
+            <div class="card-section">
+                <h3 class="section-title"><i class="fas fa-truck"></i> Delivery Details</h3>
+                
+                <div class="details-grid">
+                    <div class="details-item">
+                        <div class="details-label">Delivery Method</div>
+                        <div class="details-value" id="deliveryMethod">Self Pickup</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Pickup/Delivery Date</div>
+                        <div class="details-value" id="deliveryDate"></div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Time Slot</div>
+                        <div class="details-value" id="deliveryTime">2:00 PM - 3:00 PM</div>
+                    </div>
+                    
+                    <div class="details-item">
+                        <div class="details-label">Address</div>
+                        <div class="details-value" id="deliveryAddress">Loading...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Items -->
+            <div class="card-section">
+                <h3 class="section-title"><i class="fas fa-shopping-cart"></i> Order Items</h3>
+                
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Payment Summary -->
+        <div class="payment-summary">
+            <h3 class="section-title" style="border: none; margin-bottom: 20px; color: #27ae60;">
+                <i class="fas fa-money-check-alt"></i> Payment Summary
+            </h3>
+            
+            <div class="summary-row">
+                <span class="summary-label">Subtotal</span>
+                <span class="summary-value" id="subtotalAmount">RM 107.00</span>
+            </div>
+            
+            <div class="summary-row" id="deliveryRow" style="display: none;">
+                <span class="summary-label">Delivery Fee</span>
+                <span class="summary-value" id="deliveryAmount">RM 30.00</span>
+            </div>
+            
+            <div class="summary-row" id="discountRow" style="display: none;">
+                <span class="summary-label">Discount Applied</span>
+                <span class="summary-value" id="discountAmount" style="color: #27ae60;">-RM 0.00</span>
+            </div>
+            
+            <div class="summary-row total-row">
+                <span class="summary-label">Total Paid</span>
+                <span class="summary-value" id="totalAmount">RM 137.00</span>
+            </div>
+            
+            <div style="font-size: 0.85rem; color: #27ae60; margin-top: 15px; text-align: center;">
+                <i class="fas fa-check-circle"></i>
+                <span id="paymentStatus">Payment completed successfully</span>
+            </div>
+        </div>
+        
+        <!-- Order Timeline -->
+        <div class="timelines">
+            <h4 class="timelines-title">Order Status Timeline</h4>
+            
+            <div class="timelines-item">
+                <div class="timelines-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="timelines-content">
+                    <strong>Order Placed</strong>
+                    <div><small>Your order has been received</small></div>
+                </div>
+            </div>
+            
+            <div class="timelines-item">
+                <div class="timelines-icon" style="background: #27ae60;">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="timelines-content">
+                    <strong>Payment Confirmed</strong>
+                    <div><small>Payment has been successfully processed</small></div>
+                </div>
+            </div>
+            
+            <div class="timelines-item">
+                <div class="timelines-icon" style="background: #f39c12;">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="timelines-content">
+                    <strong>Preparing Order</strong>
+                    <div><small>Our bakers are preparing your delicious treats</small></div>
+                </div>
+            </div>
+            
+            <div class="timelines-item">
+                <div class="timelines-icon" style="background: #3498db;">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="timelines-content">
+                    <strong>Ready for Pickup/Delivery</strong>
+                    <div><small>Your order will be ready at the scheduled time</small></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="printConfirmation()">
+                <i class="fas fa-print"></i> Print Receipt
+            </button>
+            <button class="btn btn-primary" onclick="trackOrder()">
+                <i class="fas fa-map-marker-alt"></i> Track Order
+            </button>
+            <button class="btn btn-secondary" onclick="backToMenu()">
+                <i class="fas fa-utensils"></i> Back to Menu
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="confirmation-footer">
+            <p>A confirmation email has been sent to your email address.</p>
+            <p>If you have any questions, please contact our customer service.</p>
+            
+            <div class="footer-links">
+                <a href="Menu.html"><i class="fas fa-utensils"></i> Browse Menu</a>
+                <a href="#"><i class="fas fa-headset"></i> Contact Support</a>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
+        </div>
+    </div>
+        <script>
+        // ==================== LOAD ORDER DATA ====================
+        
+        function loadOrderData() {
+            try {
+                // Get order data from localStorage
+                const orderJson = localStorage.getItem('currentOrder');
+                const paymentSuccess = localStorage.getItem('paymentSuccess');
+                const paymentMethod = localStorage.getItem('paymentMethod');
+                const paymentBank = localStorage.getItem('paymentBank');
+                const paymentTime = localStorage.getItem('paymentTime');
+                const paymentReference = localStorage.getItem('paymentReference');
+                
+                if (orderJson) {
+                    const orderData = JSON.parse(orderJson);
+                    
+                    // Update order details
+                    document.getElementById('customerName').textContent = orderData.customerName || 'Customer';
+                    document.getElementById('customerEmail').textContent = orderData.email || 'Not provided';
+                    document.getElementById('customerPhone').textContent = orderData.phone || 'Not provided';
+                    
+                    // Update delivery details
+                    const isDelivery = orderData.shippingMethod === 'delivery';
+                    document.getElementById('deliveryMethod').textContent = isDelivery ? 'Delivery' : 'Self Pickup';
+                    document.getElementById('deliveryDate').textContent = formatDate(orderData.deliveryDate);
+                    document.getElementById('deliveryTime').textContent = orderData.deliveryTime || 'Not specified';
+                    
+                    // Update delivery address
+                    if (orderData.shippingAddress) {
+                        const address = `${orderData.shippingAddress.street}, ${orderData.shippingAddress.city}, ${orderData.shippingAddress.postcode} ${orderData.shippingAddress.state}, ${orderData.shippingAddress.country}`;
+                        document.getElementById('deliveryAddress').textContent = address;
+                    }
+                    
+                    // Update payment method
+                    let paymentText = paymentMethod || orderData.paymentMethod || 'Unknown';
+                    if (paymentBank) {
+                        paymentText += ` (${paymentBank})`;
+                    }
+                    document.getElementById('paymentMethod').textContent = paymentText;
+                    
+                    // Update payment status
+                    if (paymentSuccess) {
+                        document.getElementById('paymentStatus').textContent = `Payment completed via ${paymentText}`;
+                    }
+                    
+                    // Update payment summary
+                    if (orderData.total) {
+                        document.getElementById('totalAmount').textContent = orderData.total;
+                    }
+                    
+                    if (orderData.subtotal) {
+                        document.getElementById('subtotalAmount').textContent = orderData.subtotal;
+                    }
+                    
+                    // Show/hide delivery fee
+                    const deliveryRow = document.getElementById('deliveryRow');
+                    const deliveryAmount = document.getElementById('deliveryAmount');
+                    if (isDelivery && orderData.deliveryFee) {
+                        deliveryRow.style.display = 'flex';
+                        deliveryAmount.textContent = orderData.deliveryFee;
+                    }
+                    
+                    // Show/hide discount
+                    const discountRow = document.getElementById('discountRow');
+                    const discountAmount = document.getElementById('discountAmount');
+                    if (orderData.discount && orderData.discount !== 'None') {
+                        discountRow.style.display = 'flex';
+                        discountAmount.textContent = orderData.discount;
+                    }
+                    
+                    // Load cart items
+                    loadCartItems(orderData.cartItems || []);
+                    
+                    // Update order date and time
+                    const now = new Date();
+                    document.getElementById('orderDate').textContent = formatDate(now);
+                    document.getElementById('orderTime').textContent = now.toLocaleTimeString('en-MY', { 
+                        hour: '2-digit', 
+                        minute: '2-digit',
+                        hour12: true 
+                    });
+                    
+                    // Generate order ID if not exists
+                    if (paymentReference) {
+                        document.getElementById('orderId').textContent = paymentReference;
+                    } else {
+                        document.getElementById('orderId').textContent = `DF-M${Math.floor(100000 + Math.random() * 900000)}`;
+                    }
+                    
+                    // Save confirmation data
+                    saveConfirmationData(orderData, paymentMethod, paymentBank);
+                    
+                } else {
+                    // No order data found
+                    showDefaultData();
+                }
+                
+            } catch (error) {
+                console.error('Error loading order data:', error);
+                showDefaultData();
+            }
+        }
+        
+        // ==================== LOAD CART ITEMS ====================
+        
+        function loadCartItems(cartItems) {
+            const cartContainer = document.getElementById('cartItems');
+            
+            if (!cartItems || cartItems.length === 0) {
+                cartContainer.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: #a67c52;">
+                        <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>No items found</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let itemsHTML = '';
+            cartItems.forEach(item => {
+                // Format item details
+                let details = '';
+                if (item.size) {
+                    details += `${item.size} size`;
+                }
+                if (item.greetingCard) {
+                    details += details ? ' • With greeting card' : 'With greeting card';
+                }
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <div class="item-name">${item.name || 'Product'}</div>
+                            <div class="item-details">${details}</div>
+                            ${item.message ? `<div class="item-details" style="font-style: italic; margin-top: 5px;">"${item.message.substring(0, 60)}${item.message.length > 60 ? '...' : ''}"</div>` : ''}
+                        </div>
+                        <div class="item-price">RM ${item.price ? item.price.toFixed(2) : '0.00'}</div>
+                    </div>
+                `;
+            });
+            
+            cartContainer.innerHTML = itemsHTML;
+        }
+        
+        // ==================== HELPER FUNCTIONS ====================
+        
+        function formatDate(dateString) {
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-MY', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+            } catch (error) {
+                return 'Not specified';
+            }
+        }
+        
+        function showDefaultData() {
+            // Show sample data if no order data found
+            const now = new Date();
+            document.getElementById('orderDate').textContent = formatDate(now);
+            document.getElementById('orderTime').textContent = now.toLocaleTimeString('en-MY', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            
+            // Try to get cart data as fallback
+            try {
+                const cartJson = localStorage.getItem('rafasBakeryCart');
+                if (cartJson) {
+                    const cartItems = JSON.parse(cartJson);
+                    loadCartItems(cartItems);
+                    
+                    // Calculate total
+                    let subtotal = 0;
+                    cartItems.forEach(item => {
+                        subtotal += item.price || 0;
+                    });
+                    
+                    document.getElementById('subtotalAmount').textContent = `RM ${subtotal.toFixed(2)}`;
+                    document.getElementById('totalAmount').textContent = `RM ${subtotal.toFixed(2)}`;
+                }
+            } catch (error) {
+                console.error('Error loading cart data:', error);
+            }
+        }
+        
+        function saveConfirmationData(orderData, paymentMethod, paymentBank) {
+            // Save confirmation data for future reference
+            const confirmationData = {
+                ...orderData,
+                paymentMethod: paymentMethod || orderData.paymentMethod,
+                paymentBank: paymentBank,
+                confirmationTime: new Date().toISOString(),
+                orderId: document.getElementById('orderId').textContent
+            };
+            
+            localStorage.setItem('orderConfirmation', JSON.stringify(confirmationData));
+            
+            // Clear payment data but keep order confirmation
+            localStorage.removeItem('paymentSuccess');
+            localStorage.removeItem('selectedPaymentMethod');
+            localStorage.removeItem('selectedFPXBank');
+            localStorage.removeItem('paymentTime');
+            localStorage.removeItem('paymentReference');
+        }
+        
+        // ==================== ACTION FUNCTIONS ====================
+        
+        function printConfirmation() {
+            window.print();
+        }
+        
+        function trackOrder() {
+            // Redirect to track-order.html page
+            window.location.href = 'track-order.html';
+        }
+        
+        function backToMenu() {
+            // Clear cart after successful order (optional)
+            // localStorage.removeItem('rafasBakeryCart');
+            
+            // Redirect to menu
+            window.location.href = 'Menu.html';
+        }
+        
+        // ==================== INITIALIZATION ====================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load order data
+            loadOrderData();
+            
+            // Add confetti effect on load (optional)
+            setTimeout(() => {
+                createConfetti();
+            }, 500);
+        });
+        
+        // Simple confetti effect
+        function createConfetti() {
+            const confettiCount = 30;
+            const container = document.querySelector('.confirmation-container');
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    background: ${i % 3 === 0 ? '#27ae60' : i % 3 === 1 ? '#d4a574' : '#8b4513'};
+                    top: -20px;
+                    left: ${Math.random() * 100}%;
+                    border-radius: ${i % 2 === 0 ? '50%' : '0'};
+                    animation: fall ${Math.random() * 3 + 2}s linear forwards;
+                    z-index: 1000;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fall {
+                        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                        100% { transform: translateY(600px) rotate(${Math.random() * 360}deg); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                container.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 4000);
+            }
+        }
+
+        const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+    </script>
+</bodys>
+</html>

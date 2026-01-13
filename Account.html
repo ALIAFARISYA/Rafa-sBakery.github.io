@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Rafa's Bakery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <!-- ===== NAVBAR ===== -->
+<!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="#" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right side icons -->
+            <div class="header-icons">
+                <a href="cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="search-container">
+                    <a href="#" class="icon-link search-icon">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search for bread, pastries, cakes...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <a href="Account.html" class="icon-link profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="profile-dropdown">
+                        <a href="#"><i class="fas fa-user-circle"></i> My Account</a>
+                        <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                        <a href="#"><i class="fas fa-history"></i> Order History</a>
+                        <a href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+    <i class="fa fa-house"></i> 
+    <a href="Homepage.html" class="breadcrumb-link">Home</a>
+    &gt; Account
+</div>
+
+<!-- ===== TITLE ===== -->
+<section class="page-title">
+    <h1>Account</h1>
+    <p>Freshly baked with love, using the finest ingredients.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="account-container">
+
+    <!-- ===== LOGIN ===== -->
+    <div class="login-box">
+        <h2>Login</h2>
+
+        <label>Username or email address *</label>
+        <input type="text" placeholder="Username / Email address">
+
+        <label>Password</label>
+        <input type="password" placeholder="Password">
+
+        <div class="login-options">
+            <label class="remember">
+                <input type="checkbox" id="remeber"> Remember me 
+            </label>
+             <button class="btn-login" onclick="login()">Login</button>
+
+        </div>
+
+        <p class="register-text">
+            Don’t have an account yet? <span>Register Now</span>
+        </p>
+    </div>
+
+    <!-- ===== REGISTER ===== -->
+    <div class="register-box">
+        <h2>Register</h2>
+
+        <div class="row">
+            <div>
+                <label>First Name</label>
+                <input type="text" placeholder="First name">
+            </div>
+            <div>
+                <label>Last Name</label>
+                <input type="text" placeholder="Last name">
+            </div>
+        </div>
+
+        <label>Username</label>
+        <input type="text" placeholder="Username">
+
+        <label>Email address</label>
+        <input type="email" placeholder="Email address">
+
+        <label>Password</label>
+        <input type="password" placeholder="Password">
+
+        <label>Mobile</label>
+        <div class="mobile-row">
+            <select>
+                <option>+60</option>
+            </select>
+            <input type="text">
+        </div>
+
+        <label>Birthday</label>
+        <input type="text" placeholder="dd/mm/yyyy">
+
+        <label>Gender</label>
+        <div class="gender">
+            <label><input type="radio" name="gender"> Male</label>
+            <label><input type="radio" name="gender"> Female</label>
+        </div>
+        <button class="btn-signup" onclick="register()">Sign Up</button>
+
+
+    </div>
+
+</section>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+function login() {
+    const username = document.querySelector('.login-box input[type="text"]').value;
+    const password = document.querySelector('.login-box input[type="password"]').value;
+
+    if (!username || !password) {
+        alert("Please enter username and password.");
+        return;
+    }
+
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("currentUser", username);
+
+    window.location.href = "MyAccount.html";
+}
+
+
+
+function register() {
+    const firstName = document.querySelector('.register-box input[placeholder="First name"]').value;
+    const lastName = document.querySelector('.register-box input[placeholder="Last name"]').value;
+    const username = document.querySelector('.register-box input[placeholder="Username"]').value;
+    const email = document.querySelector('.register-box input[placeholder="Email address"]').value;
+    const password = document.querySelector('.register-box input[placeholder="Password"]').value;
+
+    if (!firstName || !lastName || !username || !email || !password) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    const userData = {
+        firstName,
+        lastName,
+        username,
+        email
+    };
+
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("currentUser", username);
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    alert("Registration successful!");
+    window.location.href = "MyAccount.html";
+}
+
+
+function logout() {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("rafasBakeryCart"); // optional
+
+    alert("You have been logged out.");
+    window.location.href = "Homepage.html";
+}
+
+if (localStorage.getItem("isLoggedIn")) {
+    window.location.href = "MyAccount.html";
+}
+
+
+
+const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+
+</script>
+
+
+<!-- Footer Section -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

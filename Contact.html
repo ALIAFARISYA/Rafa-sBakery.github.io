@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Rafa's Bakery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <!-- ===== NAVBAR ===== -->
+<!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="#" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right side icons -->
+            <div class="header-icons">
+                <a href="cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="search-container">
+                    <a href="#" class="icon-link search-icon">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search for bread, pastries, cakes...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <a href="Account.html" class="icon-link profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="profile-dropdown">
+                        <a href="#"><i class="fas fa-user-circle"></i> My Account</a>
+                        <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                        <a href="#"><i class="fas fa-history"></i> Order History</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+    <i class="fa fa-house"></i> 
+    <a href="Homepage.html" class="breadcrumb-link">Home</a>
+    &gt; Contact
+</div>
+
+<section class="title-contact">
+    <h2>Contact Us</h2>
+    <p>Freshly baked with love, using the finest ingredients.</p>
+</section>
+
+<hr>
+
+<section class="Contact-section">
+
+    <!-- LEFT -->
+    <div class="left">
+        <h3>Customer Support</h3>
+
+        <div class="support-grid-contact">
+
+            <div class="support-item-contact">
+                <i class="fas fa-envelope"></i>
+                <p class="heading">E-mail</p>
+                <a href="mailto:hello@rafasbakery.com">hello@rafasbakery.com</a>
+            </div>
+
+            <div class="support-item-contact">
+                <i class="fab fa-whatsapp"></i>
+                <p class="heading">WhatsApp Messaging</p>
+                <p>+6011234578</p>
+            </div>
+
+            <div class="support-item-contact">
+                <i class="fas fa-rotate"></i>
+                <p class="heading">Order Change</p>
+                <p>Submit this <u>form</u> at<br>least 24 hours before</p>
+            </div>
+
+            <div class="support-item-contact">
+                <i class="fas fa-box"></i>
+                <p class="heading">Bulk Order</p>
+                <p>Fill out this <u>form</u> with<br>your information</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+        <h3>Contact Form</h3>
+
+        <form>
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Phone Number">
+
+            <label>What is your concern?</label>
+            <select>
+                <option>Ordering / Product Information</option>
+            </select>
+
+            <textarea placeholder="Message"></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</section>
+
+<!-- Footer Section -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+</script>

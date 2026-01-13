@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafa's Bakery - Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" ></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="container header-content">
+        <div class="header-top">
+            <a href="#" class="logo">Rafa's<span> Bakery</span></a>
+            <nav>
+                <ul>
+                    <li><a href="Menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="AboutUs.html"><i class="fas fa-store"></i> About Us</a></li>
+                    <li><a href="weddingCake.html"><i class="fas fa-shopping-bag"></i> Custom Cakes</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right side icons -->
+            <div class="header-icons">
+                <a href="Cart.html" class="icon-link cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="search-container">
+                    <a href="#" class="icon-link search-icon">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search for bread, pastries, cakes...">
+                        <div class="search-results" id="searchResults"></div>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <a href="Account.html" class="icon-link profile-icon">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="profile-dropdown">
+                        <a href="#"><i class="fas fa-user-circle"></i> My Account</a>
+                        <a href="#"><i class="fas fa-heart"></i> Favorites</a>
+                        <a href="#"><i class="fas fa-history"></i> Order History</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="breadcrumb">
+        <i class="fa fa-house"></i> 
+        <a href="Homepage.html" class="breadcrumb-link">Home</a>
+        &gt; Menu
+    </div>
+
+    <!-- Filter Section -->
+    <div class="container filter-section">
+        <div class="filter-options">
+            <!-- Price Range Slider -->
+            <div class="filter-option price-slider-container">
+                <label>Price Range</label>
+                <div class="price-slider-wrapper">
+                    <div class="price-value" id="priceValue">RM 0 - RM 200</div>
+                    <div class="slider-container">
+                        <div class="slider-track" id="sliderTrack"></div>
+                        <input type="range" id="minPrice" min="0" max="200" value="0" class="range-min">
+                        <input type="range" id="maxPrice" min="0" max="200" value="200" class="range-max">
+                    </div>
+                    <div class="price-labels">
+                        <span>RM 0</span>
+                        <span>RM 200</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fresh Filter -->
+            <div class="filter-option fresh-filter">
+                <label>Freshness</label>
+                <select id="freshFilter">
+                    <option value="all">All Products</option>
+                    <option value="today">Baked Today</option>
+                    <option value="yesterday">Baked Yesterday</option>
+                </select>
+            </div>
+            
+            <!-- Best Seller Button -->
+            <div class="filter-option">
+                <label>Filter</label>
+                <button id="bestsellerBtn" class="bestseller-btn">
+                    <i class="fas fa-crown"></i> Show Best Sellers
+                </button>
+                <button id="showAllBtn" class="show-all-btn">
+                    <i class="fas fa-undo"></i> Show All Products
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+        <div class="category-item active" data-category="bread">Bread</div>
+        <div class="category-item" data-category="pastries">Pastries</div>
+        <div class="category-item" data-category="cakes">Cakes</div>
+        <div class="category-item" data-category="custom-cakes">Custom Cakes</div>
+        <div class="category-item" data-category="desserts">Desserts</div>
+        <div class="category-item" data-category="coffee">Coffee</div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="container products-grid" id="productsGrid">
+        <!-- Product cards will be added by JavaScript -->
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Help & Support</h4>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Order Online</a></li>
+                        <li><a href="#">Catering</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Product Data for all categories
+        const allProducts = {
+            'bread': [
+                { id: 1, name: "Artisan Sourdough", minPrice: 25, maxPrice: 35, price: "RM 25.00 - RM 35.00", img: "as.png", bestseller: true, fresh: "today", category: "bread" },
+                { id: 2, name: "Whole Wheat Bread", minPrice: 22, maxPrice: 30, price: "RM 22.00 - RM 30.00", img: "ww.png", bestseller: true, fresh: "today", category: "bread" },
+                { id: 3, name: "French Baguette", minPrice: 18, maxPrice: 25, price: "RM 18.00 - RM 25.00", img: "fb.png", bestseller: false, fresh: "today", category: "bread" },
+                { id: 4, name: "Multigrain Loaf", minPrice: 28, maxPrice: 38, price: "RM 28.00 - RM 38.00", img: "ml.png", bestseller: false, fresh: "yesterday", category: "bread" },
+                { id: 5, name: "Ciabatta Bread", minPrice: 20, maxPrice: 28, price: "RM 20.00 - RM 28.00", img: "cia.png", bestseller: true, fresh: "today", category: "bread" },
+                { id: 6, name: "Brioche Bun", minPrice: 15, maxPrice: 22, price: "RM 15.00 - RM 22.00", img: "bb.png", bestseller: false, fresh: "today", category: "bread" },
+                { id: 7, name: "Rye Bread", minPrice: 26, maxPrice: 34, price: "RM 26.00 - RM 34.00", img: "rb.png", bestseller: true, fresh: "yesterday", category: "bread" },
+                { id: 8, name: "Garlic Focaccia", minPrice: 30, maxPrice: 40, price: "RM 30.00 - RM 40.00", img:"gf.png", bestseller:true , fresh:"today" , category:"bread"}
+            ],
+            'pastries': [
+                { id: 9, name: "Croissant", minPrice: 8, maxPrice: 12, price: "RM 8.00 - RM 12.00", img: "croi.png", bestseller: true, fresh: "today", category: "pastries" },
+                { id: 10, name: "Danish Pastry", minPrice: 10, maxPrice: 15, price: "RM 10.00 - RM 15.00", img: "dp.png", bestseller: false, fresh: "today", category: "pastries" },
+                { id: 11, name: "Chocolate Eclair", minPrice: 12, maxPrice: 18, price: "RM 12.00 - RM 18.00", img: "chocec.png", bestseller: true, fresh: "today", category: "pastries" },
+                { id: 12, name: "Apple Turnover", minPrice: 9, maxPrice: 14, price: "RM 9.00 - RM 14.00", img: "appturn.png", bestseller: true, fresh: "yesterday", category: "pastries" },
+                { id: 13, name: "Palmier", minPrice: 7, maxPrice: 11, price: "RM 7.00 - RM 11.00", img: "palmier.png", bestseller: false, fresh: "today", category: "pastries" },
+                { id: 14, name: "Cinnamon Roll", minPrice: 10, maxPrice: 16, price: "RM 10.00 - RM 16.00", img: "cinn.png", bestseller: true, fresh: "today", category: "pastries" },
+                { id: 15, name: "Pain au Chocolat", minPrice: 11, maxPrice: 17, price: "RM 11.00 - RM 17.00", img: "pac.png", bestseller: false, fresh: "today", category: "pastries" },
+                { id: 16, name: "Fruit Danish", minPrice: 12, maxPrice: 19, price: "RM 12.00 - RM 19.00", img: "fd.png", bestseller: true, fresh: "yesterday", category: "pastries" }
+            ],
+            'cakes': [
+                { id: 17, name: "Red Velvet Cake", minPrice: 79, maxPrice: 135, price: "RM 79.00 - RM 135.00",img: "rvc.png", bestseller: true, fresh: "today", category: "cakes" },
+                { id: 18, name: "Cheesecake", minPrice: 89, maxPrice: 150, price: "RM 89.00 - RM 150.00", img: "chessec.png", bestseller: true, fresh: "today", category: "cakes" },
+                { id: 19, name: "Chocolate Fudge Cake", minPrice: 85, maxPrice: 140, price: "RM 85.00 - RM 140.00", img: "cfc.png", bestseller: true, fresh: "today", category: "cakes" },
+                { id: 20, name: "Carrot Cake", minPrice: 75, maxPrice: 125, price: "RM 75.00 - RM 125.00", img: "cc.png", bestseller: false, fresh: "yesterday", category: "cakes" },
+                { id: 21, name: "Strawberry Shortcake", minPrice: 70, maxPrice: 120, price: "RM 70.00 - RM 120.00", img: "ss.png", bestseller: true, fresh: "today", category: "cakes" },
+                { id: 22, name: "Tiramisu Cake", minPrice: 90, maxPrice: 145, price: "RM 90.00 - RM 145.00", img: "tc.png", bestseller: false, fresh: "today", category: "cakes" },
+                { id: 23, name: "Black Forest Cake", minPrice: 95, maxPrice: 155, price: "RM 95.00 - RM 155.00", img: "bfc.png", bestseller: true, fresh: "yesterday", category: "cakes" },
+                { id: 24, name: "Lemon Drizzle Cake", minPrice: 65, maxPrice: 110, price: "RM 65.00 - RM 110.00", img: "ldc.png", bestseller: false, fresh: "today", category: "cakes" }
+            ],
+            'custom-cakes': [
+                { id: 25, name: "Wedding Cake", minPrice: 200, maxPrice: 500, price: "RM 200.00 - RM 500.00", img: "wedc.png", bestseller: true, fresh: "custom", category: "custom-cakes" },
+                { id: 26, name: "Birthday Cake", minPrice: 150, maxPrice: 300, price: "RM 150.00 - RM 300.00", img: "bc.png", bestseller: true, fresh: "custom", category: "custom-cakes" },
+                { id: 27, name: "Anniversary Cake", minPrice: 180, maxPrice: 350, price: "RM 180.00 - RM 350.00", img: "ann.png", bestseller: false, fresh: "custom", category: "custom-cakes" },
+                { id: 28, name: "Theme Cake", minPrice: 250, maxPrice: 450, price: "RM 250.00 - RM 450.00", img: "theme.png", bestseller: true, fresh: "custom", category: "custom-cakes" },
+                { id: 29, name: "Character Cake", minPrice: 220, maxPrice: 400, price: "RM 220.00 - RM 400.00", img: "char.png", bestseller: false, fresh: "custom", category: "custom-cakes" },
+                { id: 30, name: "Photo Cake", minPrice: 170, maxPrice: 320, price:"RM 170.00 - RM 320.00", img:"photo.png", bestseller:true, fresh:"custom", category:"custom-cakes" },
+                { id: 31, name: "Number Cake", minPrice: 190, maxPrice: 380, price: "RM 190.00 - RM 380.00", img: "num.png", bestseller: false, fresh: "custom", category: "custom-cakes" },
+                { id: 32, name: "Baby Shower Cake", minPrice: 160, maxPrice: 310, price: "RM 160.00 - RM 310.00", img: "baby.png", bestseller: true, fresh: "custom", category: "custom-cakes" }
+            ],
+            'desserts': [
+                { id: 33, name: "Chocolate Mousse", minPrice: 20, maxPrice: 30, price: "RM 20.00 - RM 30.00", img: "cm.png", bestseller: true, fresh: "today", category: "desserts" },
+                { id: 34, name: "Fruit Tart", minPrice: 18, maxPrice: 25, price: "RM 18.00 - RM 25.00", img: "fr.png", bestseller: false, fresh: "today", category: "desserts" },
+                { id: 35, name: "Crème Brûlée", minPrice: 22, maxPrice: 32, price: "RM 22.00 - RM 32.00", img: "cb.png", bestseller: true, fresh: "yesterday", category: "desserts" },
+                { id: 36, name: "Panna Cotta", minPrice: 20, maxPrice: 28, price: "RM 20.00 - RM 28.00", img: "pc.png", bestseller: false, fresh: "today", category: "desserts" },
+                { id: 37, name: "Chocolate Lava Cake", minPrice: 25, maxPrice: 35, price: "RM 25.00 - RM 35.00", img:"lava.png", bestseller:true, fresh:"today", category:"desserts" },
+                { id: 38, name:"Berry Parfait", minPrice :19 , maxPrice :27 , price:"RM19.00-RM27.00" , img:"bp.png", bestseller:false , fresh:"today" , category:"desserts"},
+                { id :39 , name :"Apple Pie" , minPrice :24 , maxPrice :34 , price :"RM24.00-RM34.00" , img:"ap.png", bestseller:true , fresh:"yesterday" , category:"desserts"},
+                { id: 40, name: "Brownie", minPrice: 15, maxPrice: 22, price: "RM 15.00 - RM 22.00", img: "brownie.png", bestseller: true, fresh: "today", category: "desserts" }
+            ],
+            'coffee': [
+                { id: 41, name: "Espresso", minPrice: 8, maxPrice: 12, price: "RM 8.00 - RM 12.00", img: "ess.png", bestseller: true, fresh: "today", category: "coffee" },
+                { id: 42, name: "Cappuccino", minPrice: 12, maxPrice: 18, price: "RM 12.00 - RM 18.00", img: "capp.png", bestseller: true, fresh: "today", category: "coffee" },
+                { id: 43, name: "Latte", minPrice: 14, maxPrice: 20, price: "RM 14.00 - RM 20.00", img: "latte.png", bestseller: false, fresh: "today", category: "coffee" },
+                { id: 44, name: "Americano", minPrice: 10, maxPrice: 15, price: "RM 10.00 - RM 15.00", img: "ame.png", bestseller: true, fresh: "yesterday", category: "coffee" },
+                { id: 45, name: "Mocha", minPrice: 16, maxPrice: 22, price: "RM 16.00 - RM 22.00", img:"mocha.png", bestseller:false , fresh:"today" , category:"coffee"},
+                { id :46 , name :"Flat White" , minPrice :13 , maxPrice :19 , price :"RM13.00-RM19.00" , img:"fw.png", bestseller:true , fresh:"today" , category:"coffee"},
+                { id: 47, name: "Macchiato", minPrice: 9, maxPrice: 14, price: "RM 9.00 - RM 14.00", img: "mac.png", bestseller: false, fresh: "yesterday", category: "coffee" },
+                { id: 48, name: "Turkish Coffee", minPrice: 11, maxPrice: 17, price: "RM 11.00 - RM 17.00", img: "turkish.png", bestseller: true, fresh: "today", category: "coffee" }
+            ]
+        };
+
+        // Global variables
+        let currentCategory = 'bread';
+        let currentProducts = [...allProducts['bread']];
+        let priceUpdateTimeout;
+
+        // Function untuk filter produk berdasarkan harga
+        function filterProductsByPrice(products, minPrice, maxPrice) {
+            return products.filter(product => {
+                // Return true jika product price range overlaps dengan filter range
+                return product.minPrice <= maxPrice && product.maxPrice >= minPrice;
+            });
+        }
+// Update the updateProductsDisplay function in Menu.html
+function updateProductsDisplay(productsToShow = null) {
+    const productsGrid = document.getElementById('productsGrid');
+    productsGrid.innerHTML = '';
+    
+    // Jika productsToShow null, gunakan filter harga
+    let productsToDisplay;
+    if (productsToShow === null) {
+        const minPrice = parseInt(document.getElementById('minPrice').value);
+        const maxPrice = parseInt(document.getElementById('maxPrice').value);
+        productsToDisplay = filterProductsByPrice(currentProducts, minPrice, maxPrice);
+    } else {
+        productsToDisplay = productsToShow;
+    }
+    
+    // Apply fresh filter jika ada
+    const freshFilter = document.getElementById('freshFilter');
+    if (freshFilter.value !== 'all') {
+        productsToDisplay = productsToDisplay.filter(product => product.fresh === freshFilter.value);
+    }
+    
+    if (productsToDisplay.length === 0) {
+        productsGrid.innerHTML = `
+            <div class="no-products-message">
+                <i class="fas fa-search"></i>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters or price range</p>
+            </div>
+        `;
+        return;
+    }
+    
+    productsToDisplay.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.setAttribute('data-id', product.id);
+        productCard.setAttribute('data-bestseller', product.bestseller);
+        productCard.setAttribute('data-fresh', product.fresh);
+        productCard.setAttribute('data-minprice', product.minPrice);
+        productCard.setAttribute('data-maxprice', product.maxPrice);
+        productCard.setAttribute('data-category', product.category);
+        
+        let badge = '';
+        if (product.bestseller) {
+            badge = '<div class="bestseller-badge"><i class="fas fa-crown"></i> Best Seller</div>';
+        }
+        
+        // Only show "Customise" button for custom-cakes category
+        const actionButton = product.category === 'custom-cakes' 
+            ? '<a href="weddingCake.html" class="customize-btn">Customise</a>' 
+            : `<div class="product-availability">
+                  <i class="fas fa-check-circle"></i> Available
+               </div>`;
+        
+        // Determine if product has image or icon
+        let imageContent = '';
+        if (product.img) {
+            // Jika ada gambar, guna <img> tag
+            imageContent = `<img src="${product.img}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">`;
+        } else {
+            // Jika takde gambar, guna icon
+            imageContent = `<i class="fas ${product.icon}"></i>`;
+        }
+        
+        // Check if product is clickable (Red Velvet Cake or Whole Wheat Bread)
+        let isClickable = false;
+        let detailPage = '';
+        
+        if (product.name === "Red Velvet Cake") {
+            isClickable = true;
+            detailPage = "MenuDetail.html";
+        } else if (product.name === "Whole Wheat Bread") {
+            isClickable = true;
+            detailPage = "wwDetail.html";
+        } else if (product.name === "Wedding Cake") {
+            isClickable = true;
+            detailPage = "weddingCake.html";
+        }   
+
+        // Create product card content
+        if (isClickable) {
+            // Clickable product - use anchor tag
+            productCard.innerHTML = `
+                ${badge}
+                <a href="${detailPage}?id=${product.id}" class="product-link" style="text-decoration: none; color: inherit; display: block;">
+                    <div class="product-image">
+                        ${imageContent}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                    </div>
+                </a>
+                ${actionButton}
+            `;
+        } else {
+            // Non-clickable product - no anchor tag, plain div
+            productCard.innerHTML = `
+                ${badge}
+                <div class="product-image">
+                    ${imageContent}
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-price">${product.price}</p>
+                </div>
+                ${actionButton}
+            `;
+            
+        }
+        
+        productsGrid.appendChild(productCard);
+    });
+    
+    // Add click event for custom cakes "Customise" button
+    document.querySelectorAll('.customize-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productCard = this.closest('.product-card');
+            const productName = productCard.querySelector('.product-title').textContent;
+        });
+    });
+}
+
+        // Function untuk change category
+        function changeCategory(categoryKey) {
+            currentCategory = categoryKey;
+            
+            // Update category nav
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-category') === categoryKey) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Set current products
+            if (allProducts[currentCategory]) {
+                currentProducts = [...allProducts[currentCategory]];
+                
+                // Adjust price slider for custom cakes
+                if (currentCategory === 'custom-cakes') {
+                    document.getElementById('minPrice').max = 500;
+                    document.getElementById('maxPrice').max = 500;
+                    document.getElementById('maxPrice').value = 500;
+                } else {
+                    document.getElementById('minPrice').max = 200;
+                    document.getElementById('maxPrice').max = 200;
+                    document.getElementById('maxPrice').value = 200;
+                }
+                
+                // Reset min price
+                document.getElementById('minPrice').value = 0;
+                
+                // Update slider display
+                updateSlider();
+                
+                // Update products display
+                updateProductsDisplay();
+                
+                // Hide any filter message
+                hideFilterMessage();
+                
+                // Reset show all button
+                document.getElementById('bestsellerBtn').style.display = 'flex';
+                document.getElementById('showAllBtn').style.display = 'none';
+                
+                // Reset fresh filter
+                document.getElementById('freshFilter').value = 'all';
+            }
+        }
+
+        // Update slider function
+        function updateSlider() {
+            let minVal = parseInt(document.getElementById('minPrice').value);
+            let maxVal = parseInt(document.getElementById('maxPrice').value);
+            const maxRange = parseInt(document.getElementById('maxPrice').max);
+            
+            // Prevent crossing
+            if (minVal > maxVal) {
+                [minVal, maxVal] = [maxVal, minVal];
+                document.getElementById('minPrice').value = minVal;
+                document.getElementById('maxPrice').value = maxVal;
+            }
+            
+            // Update display
+            document.getElementById('priceValue').textContent = `RM ${minVal} - RM ${maxVal}`;
+            
+            // Update track
+            const minPercent = (minVal / maxRange) * 100;
+            const maxPercent = (maxVal / maxRange) * 100;
+            document.getElementById('sliderTrack').style.left = `${minPercent}%`;
+            document.getElementById('sliderTrack').style.right = `${100 - maxPercent}%`;
+            
+            // Update price labels
+            document.querySelector('.price-labels span:first-child').textContent = 'RM 0';
+            document.querySelector('.price-labels span:last-child').textContent = `RM ${maxRange}`;
+            
+            // Filter products with delay untuk performance
+            clearTimeout(priceUpdateTimeout);
+            priceUpdateTimeout = setTimeout(() => {
+                updateProductsDisplay();
+            }, 300);
+        }
+
+        // Filter Message Functions
+        function showFilterMessage(text) {
+            // Remove existing message if any
+            hideFilterMessage();
+            
+            const message = document.createElement('div');
+            message.className = 'filter-message';
+            message.textContent = text;
+            message.id = 'filterMessage';
+            
+            const filterSection = document.querySelector('.filter-section');
+            filterSection.appendChild(message);
+        }
+        
+        function hideFilterMessage() {
+            const existingMessage = document.getElementById('filterMessage');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+        }
+
+        // Update cart count from localStorage
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('rafasBakeryCart')) || [];
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial category to Bread
+            changeCategory('bread');
+            
+            // Update cart count
+            updateCartCount();
+
+           // Search functionality
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+function searchProducts(searchTerm) {
+    const term = searchTerm.toLowerCase().trim();
+    
+    if (term === '') {
+        searchResults.style.display = 'none';
+        return;
+    }
+    
+    // Flatten semua produk dari semua kategori
+    let allProductsArray = [];
+    Object.values(allProducts).forEach(categoryProducts => {
+        allProductsArray = allProductsArray.concat(categoryProducts);
+    });
+    
+    // Filter produk berdasarkan search term
+    const results = allProductsArray.filter(product => {
+        return product.name.toLowerCase().includes(term) || 
+               product.category.toLowerCase().includes(term);
+    });
+    
+    displaySearchResults(results);
+}
+
+function displaySearchResults(results) {
+    searchResults.innerHTML = '';
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <p>No products found for your search</p>
+            </div>
+        `;
+        searchResults.style.display = 'block';
+        return;
+    }
+    
+    // Limit results to 10
+    const limitedResults = results.slice(0, 10);
+    
+    limitedResults.forEach(product => {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'search-result-item';
+        resultItem.setAttribute('data-id', product.id);
+        resultItem.setAttribute('data-category', product.category);
+        
+        let imageContent = '';
+        if (product.img) {
+            imageContent = `<img src="${product.img}" alt="${product.name}">`;
+        } else {
+            imageContent = `<i class="fas ${product.icon || 'fa-bread-slice'}"></i>`;
+        }
+        
+        resultItem.innerHTML = `
+            <div class="result-image">
+                ${imageContent}
+            </div>
+            <div class="result-info">
+                <h4>${product.name}</h4>
+                <p>${product.price}</p>
+                <span class="result-category">${product.category}</span>
+            </div>
+        `;
+        
+        // Add click event to search result
+        resultItem.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            const productId = parseInt(this.getAttribute('data-id'));
+            
+            // Change to the correct category
+            changeCategory(category);
+            
+            // Highlight the product
+            highlightProduct(productId);
+            
+            // Close search
+            searchInput.value = '';
+            searchResults.style.display = 'none';
+            searchBar.classList.remove('active');
+        });
+        
+        searchResults.appendChild(resultItem);
+    });
+    
+    searchResults.style.display = 'block';
+}
+
+function highlightProduct(productId) {
+    // Remove previous highlights
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.classList.remove('highlighted');
+    });
+    
+    // Find and highlight the product
+    const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+    if (productCard) {
+        productCard.classList.add('highlighted');
+        
+        // Scroll to the product
+        productCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+        
+        // Remove highlight after 3 seconds
+        setTimeout(() => {
+            productCard.classList.remove('highlighted');
+        }, 3000);
+    }
+}
+
+// Add event listener for search input
+searchInput.addEventListener('input', function() {
+    searchProducts(this.value);
+});
+
+// Close search results when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-container') && 
+        !e.target.closest('.search-results')) {
+        searchResults.style.display = 'none';
+    }
+});
+
+// Add keyboard navigation for search
+searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        searchInput.value = '';
+        searchResults.style.display = 'none';
+        searchBar.classList.remove('active');
+    }
+    
+    if (e.key === 'Enter' && this.value.trim() !== '') {
+        e.preventDefault();
+        const firstResult = searchResults.querySelector('.search-result-item');
+        if (firstResult) {
+            firstResult.click();
+        }
+    }
+});
+
+// Tambahkan styling untuk highlighted product (CSS tambahan)
+const style = document.createElement('style');
+style.textContent = `
+    .product-card.highlighted {
+        animation: highlightPulse 2s ease-in-out;
+        box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.3);
+        border-radius: 12px;
+    }
+    
+    @keyframes highlightPulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+    }
+`;
+document.head.appendChild(style);
+
+            // Header Search and Profile functionality
+            const searchIcon = document.querySelector('.search-icon');
+            const searchBar = document.querySelector('.search-bar');
+            const profileIcon = document.querySelector('.profile-icon');
+            const profileDropdown = document.querySelector('.profile-dropdown');
+            
+            searchIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchBar.classList.toggle('active');
+            profileDropdown.classList.remove('active');
+    
+            // Focus on search input when opened
+            if (searchBar.classList.contains('active')) {
+                setTimeout(() => {
+                searchInput.focus();
+                }, 100);
+            }
+        });
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    searchBar.classList.remove('active');
+                }
+                if (!e.target.closest('.profile-container')) {
+                    profileDropdown.classList.remove('active');
+                }
+            });
+            
+            // Price Range Slider dengan auto-filter
+            const minPriceSlider = document.getElementById('minPrice');
+            const maxPriceSlider = document.getElementById('maxPrice');
+            
+            minPriceSlider.addEventListener('input', updateSlider);
+            maxPriceSlider.addEventListener('input', updateSlider);
+            updateSlider(); // Initial update
+            
+            // Fresh Filter
+            document.getElementById('freshFilter').addEventListener('change', function() {
+                updateProductsDisplay();
+            });
+            
+            // Best Seller Button
+            const bestsellerBtn = document.getElementById('bestsellerBtn');
+            const showAllBtn = document.getElementById('showAllBtn');
+            
+            bestsellerBtn.addEventListener('click', function() {
+                const minPrice = parseInt(document.getElementById('minPrice').value);
+                const maxPrice = parseInt(document.getElementById('maxPrice').value);
+                
+                // Filter berdasarkan harga dulu
+                let filteredProducts = filterProductsByPrice(currentProducts, minPrice, maxPrice);
+                
+                // Kemudian filter bestseller
+                filteredProducts = filteredProducts.filter(product => product.bestseller === true);
+                
+                // Apply fresh filter jika ada
+                const freshFilterValue = document.getElementById('freshFilter').value;
+                if (freshFilterValue !== 'all') {
+                    filteredProducts = filteredProducts.filter(product => product.fresh === freshFilterValue);
+                }
+                
+                // Update display dengan produk bestseller
+                updateProductsDisplay(filteredProducts);
+                
+                // Update buttons
+                bestsellerBtn.style.display = 'none';
+                showAllBtn.style.display = 'flex';
+                
+                // Show message
+                showFilterMessage('Showing Best Sellers Only');
+            });
+            
+            showAllBtn.addEventListener('click', function() {
+                // Reset semua filter - kembali ke filter harga dan fresh filter sahaja
+                updateProductsDisplay();
+                
+                // Update buttons
+                bestsellerBtn.style.display = 'flex';
+                showAllBtn.style.display = 'none';
+                
+                // Hide message
+                hideFilterMessage();
+            });
+            
+            // Category Navigation
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const categoryKey = this.getAttribute('data-category');
+                    changeCategory(categoryKey);
+                });
+            });
+        });
+
+        const accountLink = document.getElementById("accountLink");
+
+if (localStorage.getItem("isLoggedIn")) {
+    accountLink.href = "MyAccount.html";
+}
+    </script>
+</body>
+</html>

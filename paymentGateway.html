@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPX Payment Gateway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<bodys>
+    <!-- Bank Header -->
+    <div class="bank-header">
+        <div class="bank-logo">
+            <i class="fas fa-university"></i>
+            <span id="bankName">Maybank FPX</span>
+        </div>
+        <div class="secure-badge">
+            <i class="fas fa-lock"></i> SECURE CONNECTION
+        </div>
+    </div>
+    
+    <!-- Payment Container -->
+    <div class="payment-container">
+        <div class="payment-content">
+            <!-- Merchant Info -->
+            <div class="merchant-info">
+                <div class="merchant-name">Merchant: Rafa's Bakery</div>
+                <div>Transaction via FPX (Financial Process Exchange)</div>
+            </div>
+            
+            <!-- Transaction Details -->
+            <div class="transaction-details">
+                <div class="detail-row">
+                    <div class="detail-label">Reference Number</div>
+                    <div class="detail-value" id="refNumber">MB20231234567</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Transaction Date & Time</div>
+                    <div class="detail-value" id="transDateTime">15 Dec 2023, 14:30:25</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Order ID</div>
+                    <div class="detail-value" id="orderId">DF-M834862</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Merchant Name</div>
+                    <div class="detail-value">Rafa's Bakery Sdn Bhd</div>
+                </div>
+                <div class="amount-row">
+                    <div>Amount to Pay:</div>
+                    <div id="amountToPay">MYR 137.00</div>
+                </div>
+            </div>
+            
+            <!-- Timer -->
+            <div class="timer" id="paymentTimer">
+                <i class="fas fa-clock"></i>
+                <span>Time remaining to complete payment:</span>
+                <span class="time-displays" id="timeDisplay">10:00</span>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="login-form">
+                <div class="form-title">Secure Login to Your Bank</div>
+                
+                <div class="form-group username-field">
+                    <label for="username">Username / User ID</label>
+                    <input type="text" id="username" placeholder="Enter your username" maxlength="20">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                
+                <button class="request-tac-btn" onclick="generateTAC()">
+                    <i class="fas fa-mobile-alt"></i>
+                    Request TAC (Transaction Authorization Code)
+                </button>
+                
+                <!-- TAC Section -->
+                <div class="tac-section" id="tacSection" style="display: none;">
+                    <div class="tac-title">
+                        <i class="fas fa-university"></i>
+                        Enter TAC 
+                    </div>
+                    <p style="font-size: 14px; margin-bottom: 15px; color: #e65100;">
+                        A 6-digit TAC has been sent to your account.
+                    </p>
+                    <div class="tac-input">
+                        <input type="text" id="tacCode" placeholder="000000" maxlength="6" pattern="[0-9]{6}">
+                        <div class="resend-tac" onclick="resendTAC()">Resend TAC</div>
+                    </div>
+                    <div style="font-size: 13px; color: #e65100; margin-top: 15px;">
+                        <i class="fas fa-info-circle"></i>
+                        TAC is valid for 5 minutes only
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Status Messages -->
+            <div class="status-message processing" id="processingMessage">
+                <i class="fas fa-spinner fa-spin"></i>
+                Processing your payment. Please do not close this window.
+            </div>
+            
+            <!-- Security Tips -->
+            <div class="security-tips">
+                <strong><i class="fas fa-shield-alt"></i> Security Tips:</strong>
+                <ul>
+                    <li>Never share your password or TAC with anyone</li>
+                    <li>Make sure the website address starts with "https://"</li>
+                    <li>Always log out after completing your transaction</li>
+                    <li>Verify the merchant name and amount before proceeding</li>
+                </ul>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="cancel-button" onclick="cancelFPXPayment()">
+                    Cancel Payment
+                </button>
+                <button class="pay-button" id="payButton" onclick="processFPXPayment()">
+                    <i class="fas fa-lock"></i>
+                    Confirm & Pay
+                </button>
+            </div>
+            
+            <!-- Loading Animation -->
+            <div class="loading" id="loadingAnimation">
+                <div class="spinner"></div>
+                <div>Verifying payment with bank...</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // ==================== VARIABLES ====================
+        let timeLeft = 10 * 60; // 10 minutes for FPX payment
+        let timerInterval;
+        let generatedTAC = '';
+        let selectedBank = '';
+        
+        // ==================== TIMER FUNCTIONS ====================
+        
+        function startTimer() {
+            const timeDisplay = document.getElementById('timeDisplay');
+            
+            function updateTimer() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Change color when time is running low
+                if (timeLeft <= 60) {
+                    timeDisplay.style.color = '#ffcccc';
+                    timeDisplay.style.animation = 'pulse 1s infinite';
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timeExpired();
+                }
+                timeLeft--;
+            }
+            
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+        
+        function timeExpired() {
+            alert('Payment session has expired. Please start a new payment.');
+            window.location.href = 'placeorder.html';
+        }
+        
+        // ==================== LOAD TRANSACTION DATA ====================
+        
+        function loadTransactionData() {
+            try {
+                const orderJson = localStorage.getItem('currentOrder');
+                if (orderJson) {
+                    const orderData = JSON.parse(orderJson);
+                    
+                    // Update order ID
+                    document.getElementById('orderId').textContent = orderData.orderId || `DF-M${Math.floor(100000 + Math.random() * 900000)}`;
+                    
+                    // Update amount
+                    if (orderData.total) {
+                        document.getElementById('amountToPay').textContent = orderData.total;
+                    }
+                }
+                
+                // Update reference number
+                const refNum = 'MB' + new Date().getFullYear() + 
+                              (new Date().getMonth() + 1).toString().padStart(2, '0') + 
+                              Math.floor(10000 + Math.random() * 90000);
+                document.getElementById('refNumber').textContent = refNum;
+                
+                // Update date time
+                const now = new Date();
+                const dateTimeStr = now.toLocaleDateString('en-MY', { 
+                    day: 'numeric', 
+                    month: 'short', 
+                    year: 'numeric' 
+                }) + ', ' + now.toLocaleTimeString('en-MY', { 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit' 
+                });
+                document.getElementById('transDateTime').textContent = dateTimeStr;
+                
+                // Get selected bank
+                const bankName = localStorage.getItem('selectedFPXBank') || 'Maybank';
+                document.getElementById('bankName').textContent = bankName + ' FPX';
+                selectedBank = bankName;
+                
+            } catch (error) {
+                console.error('Error loading transaction data:', error);
+            }
+        }
+        
+        // ==================== TAC FUNCTIONS ====================
+        
+        function generateTAC() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Validate credentials
+            if (!username || !password) {
+                alert('Please enter your username and password first');
+                return;
+            }
+            
+            // Generate 6-digit TAC
+            generatedTAC = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            // Show TAC section
+            document.getElementById('tacSection').style.display = 'block';
+            
+            // Auto-fill TAC for demo (in real scenario, user would receive SMS)
+            document.getElementById('tacCode').value = generatedTAC;
+            
+            // Show message
+            alert(`TAC has been "sent" to your account.`);
+        }
+        
+        function resendTAC() {
+            if (!generatedTAC) {
+                generateTAC();
+                return;
+            }
+            
+            // Generate new TAC
+            generatedTAC = Math.floor(100000 + Math.random() * 900000).toString();
+            document.getElementById('tacCode').value = generatedTAC;
+            
+            alert(`New TAC has been "resent". Please check your account.`);
+        }
+        
+        // ==================== PAYMENT PROCESSING ====================
+        
+        function processFPXPayment() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const tacCode = document.getElementById('tacCode').value;
+            
+            // Validate all fields
+            if (!username || !password) {
+                alert('Please enter your username and password');
+                return;
+            }
+            
+            if (!generatedTAC) {
+                alert('Please request a TAC first');
+                return;
+            }
+            
+            if (!tacCode || tacCode.length !== 6) {
+                alert('Please enter the 6-digit TAC');
+                return;
+            }
+            
+            // Validate TAC
+            if (tacCode !== generatedTAC) {
+                alert('Invalid TAC. Please enter the correct TAC sent to your mobile.');
+                return;
+            }
+            
+            // Disable buttons and show processing
+            document.getElementById('payButton').disabled = true;
+            document.querySelector('.cancel-button').disabled = true;
+            document.getElementById('processingMessage').style.display = 'block';
+            document.getElementById('loadingAnimation').style.display = 'block';
+            document.getElementById('payButton').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Simulate bank verification
+            setTimeout(() => {
+                // Simulate successful payment
+                completePayment();
+            }, 3000);
+        }
+        
+        function completePayment() {
+            // Save payment details
+            localStorage.setItem('paymentSuccess', 'true');
+            localStorage.setItem('paymentMethod', 'FPX Online Banking');
+            localStorage.setItem('paymentBank', selectedBank);
+            localStorage.setItem('paymentTime', new Date().toISOString());
+            localStorage.setItem('paymentReference', document.getElementById('refNumber').textContent);
+            
+            // Clear timer
+            clearInterval(timerInterval);
+            
+            // Show success message
+            document.getElementById('processingMessage').style.display = 'none';
+            document.getElementById('loadingAnimation').style.display = 'none';
+            
+            // Create success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'status-message success';
+            successMsg.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                Payment successful! Redirecting to confirmation page...
+            `;
+            successMsg.style.display = 'block';
+            
+            document.querySelector('.security-tips').before(successMsg);
+            
+            // Redirect to success page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'confirmation.html';
+            }, 2000);
+        }
+        
+        function cancelFPXPayment() {
+            if (confirm('Are you sure you want to cancel this payment? This transaction will be terminated.')) {
+                clearInterval(timerInterval);
+                window.location.href = 'payment.html';
+            }
+        }
+        
+        // ==================== INITIALIZATION ====================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start timer
+            startTimer();
+            
+            // Load transaction data
+            loadTransactionData();
+            
+            // Auto-generate TAC for demo after 2 seconds
+            setTimeout(() => {
+                if (!generatedTAC) {
+                    generateTAC();
+                }
+            }, 2000);
+            
+            // Add input validation
+            document.getElementById('tacCode').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '').substring(0, 6);
+            });
+            
+            // Add enter key support
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    processFPXPayment();
+                }
+            });
+        });
+
+        const accountLink = document.getElementById("accountLink");
+
+            if (localStorage.getItem("isLoggedIn")) {
+                accountLink.href = "MyAccount.html";
+            }
+    </script>
+</bodys>
+</html>
